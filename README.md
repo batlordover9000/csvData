@@ -10,3 +10,18 @@
 - [ ] Guess the types and lengths (when required) of each column
 - [ ] count null or blank values in a col
  
+## Assumptions
+
+* CSV file must be openable
+* CSV file must contain headers in first row.
+
+## MySQL type guessing
+
+Types to guess:
+* int (len)
+* datetime
+* time
+* date
+* varchar (len)
+* text
+* decimal (m,d)
