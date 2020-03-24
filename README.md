@@ -18,11 +18,12 @@
 ## MySQL type guessing
 
 Types to guess:
-* int (len)
 * datetime
 * date
-* varchar (len)
 * decimal (m,d)
+* int (len)
+* varchar (len)
+
 
 Process for type guessing:
 * iterate over columns
