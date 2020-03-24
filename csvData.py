@@ -141,7 +141,7 @@ class csvData:
                             gl['vl'] = len(r)
                 
                 i+=1
-            n+=1
+            
             typekey = ''
             tm = 0
             for t, count in gt.items():
@@ -158,4 +158,6 @@ class csvData:
                 self.types[n] = typekey + '('+str(gl['m'])+','+str(gl['d'])+')'
             else:
                 self.types[n] = typekey + 'varchar(255)'
+            
             print(self.filteredFields[n],self.types[n])
+            n+=1
