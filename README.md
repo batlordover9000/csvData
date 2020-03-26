@@ -7,7 +7,7 @@
 - [x] Get the total number of rows
 - [x] Get the headers for the csv
 - [ ] Create a MySQL 'create table' code from the file 
-- [ ] Guess the types and lengths (when required) of each column
+- [x] Guess the types and lengths (when required) of each column
 - [ ] count null or blank values in a col
  
 ## Assumptions

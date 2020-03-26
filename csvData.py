@@ -23,6 +23,7 @@ class csvData:
             self.f = None
             self.getFields()
             self.types = {}
+            
     def getReader(self):
         self.f = open(self.filename,"r",newline=self.row_delimiter)
         reader = csv.reader(self.f,delimiter=self.col_delimiter)
@@ -61,7 +62,7 @@ class csvData:
         # use the filtered fieldnames
         # return sql string
         CREATE TABLE IF NOT EXISTS `conlontj_wifi` (
-          `id` int(5) NOT NULL AUTO_INCREMENT,
+          `id` int(5) NOT NULL,
           `MAC` varchar(50) NOT NULL,
           `SSID` varchar(50) NOT NULL,
           `AuthMode` varchar(100) NOT NULL,
@@ -84,7 +85,7 @@ class csvData:
         n=0
         while n < len(self.originalFields):#iterate over col indexes
             gt = {'date':0,'datetime':0,'varchar':0,'int':0,'decimal':0}
-            gl = {'m':0,'d':0,'vl':0,'il':0}
+            gl = {'m':1,'d':1,'vl':1,'il':1}
             reader = self.getReader()
             i=0
             for row in reader:
@@ -141,7 +142,7 @@ class csvData:
                             gl['vl'] = len(r)
                 
                 i+=1
-            
+                #end row loop
             typekey = ''
             tm = 0
             for t, count in gt.items():
@@ -161,3 +162,20 @@ class csvData:
             
             print(self.filteredFields[n],self.types[n])
             n+=1
+            #end col loop
+#  __name__ this special var tells us if we are calling 
+#   the class directly or importing it in another file
+if __name__ == '__main__':
+    import sys
+    
+    #print(sys.argv)
+    if len(sys.argv) == 2:
+        #set the default behavior of the script when run from the cmd line
+        c = csvData(sys.argv[1])
+        if c.canopen:
+            #print(c.filename)
+            print(c.originalFields)
+            print(c.filteredFields)
+            c.guessTypes()
+    else:
+        print('Use: >python csvData.py [csvfilename.csv]')

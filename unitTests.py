@@ -1,6 +1,9 @@
 from csvData import csvData
 
 c = csvData('sample2.csv')
+
+
+
 if c.canopen:
     print(c.filename)
     print(c.originalFields)
