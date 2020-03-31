@@ -1,12 +1,20 @@
 # csvData
 
+
+## Usage:
+clone repo
+rename config.sample.py to config.py
+change DB credential in config.py
+python3 csvData.py mycsvfile.csv
+
+
 ## Todo:
 
 
 - [x] Scale to really large csv files (2gb maybe?)
 - [x] Get the total number of rows
 - [x] Get the headers for the csv
-- [ ] Create a MySQL 'create table' code from the file 
+- [x] Create a MySQL 'create table' code from the file 
 - [x] Guess the types and lengths (when required) of each column
 - [ ] count null or blank values in a col
  
