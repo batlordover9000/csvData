@@ -9,6 +9,7 @@ if c.canopen:
     print(c.originalFields)
     print(c.filteredFields)
     c.guessTypes()
+    c.insert2sql()
     #c.checkShape()
 #c.loadFile('sample.csv')
 

@@ -1,4 +1,4 @@
-import os,csv,re,datetime
+import os,csv,re,datetime,pymysql,config
 
 class csvData:
     
@@ -12,10 +12,11 @@ class csvData:
             print('Could not open ' , fn)
         self.canopen = canopen
         if self.canopen:
+            
             self.filename = fn
             #self.filepath = ''
-            self.col_delimiter = ','
-            self.row_delimiter = '\n'
+            self.col_delimiter = config.col_delimiter
+            self.row_delimiter = config.row_delimiter
             self.totalRows = 0
             self.originalFields = []
             self.filteredFields = []
@@ -162,6 +163,17 @@ class csvData:
             
             print(self.filteredFields[n],self.types[n])
             n+=1
+    def insert2sql(self):
+        import config
+        conn = pymysql.connect(host=config.DB['host'], 
+        port=config.DB['port'], 
+        user=config.DB['user'],
+        passwd=config.DB['passwd'], 
+        db=config.DB['db'], autocommit=True) #setup our credentials
+        cur = conn.cursor(pymysql.cursors.DictCursor)
+        
+        
+        
             #end col loop
 #  __name__ this special var tells us if we are calling 
 #   the class directly or importing it in another file
